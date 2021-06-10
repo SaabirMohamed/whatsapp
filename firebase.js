@@ -1,12 +1,13 @@
 import firebase from "firebase";
+import "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAqRYLLHDiv-5sPIMCBdtte-a_O4DhuKm0",
-  authDomain: "whatsapclone-44e98.firebaseapp.com",
-  projectId: "whatsapclone-44e98",
-  storageBucket: "whatsapclone-44e98.appspot.com",
-  messagingSenderId: "321935995041",
-  appId: "1:321935995041:web:c4d84d5cb63eefbd3f40e0",
+  apiKey: process.env.FB_API_KEY,
+  authDomain: process.env.FB_AUTHDOMAIN,
+  projectId: process.env.FB_PROJECT_ID,
+  storageBucket: process.env.FB_STORAGE_BUCKET,
+  messagingSenderId: process.env.FB_MESSAGING_SENDER_ID,
+  appId: process.env.FB_APP_ID,
 };
 
 const app = !firebase.apps.length
@@ -14,7 +15,11 @@ const app = !firebase.apps.length
   : firebase.app();
 
 const db = app.firestore();
-const auth = app.auth();
-const provider = new firebase.auth.GoogleAuthProvider();
+const storage = firebase.storage();
 
-export { db, auth, provider };
+export { db, storage };
+
+// const auth = app.auth();
+// const provider = new firebase.auth.GoogleAuthProvider();
+
+// export { db, auth, provider };
